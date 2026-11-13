@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPVG Gaming Biobío — eSports IPVG</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0b0f19;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        /* Barra de navegación */
+        header {
+            background-color: #111827;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #0ea5e9;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #0ea5e9;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 24px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #0ea5e9;
+        }
+
+        .btn-nav {
+            background-color: #0ea5e9;
+            color: #0b0f19 !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: bold !important;
+            cursor: pointer;
+        }
+
+        .btn-nav:hover {
+            background-color: #38bdf8;
+        }
+
+        /* Hero con imagen de fondo */
+        .hero {
+            background: linear-gradient(rgba(11, 15, 25, 0.78), rgba(11, 15, 25, 0.92)),
+                        url('https://img.redbull.com/images/c_crop,x_425,y_0,h_2560,w_3414/c_fill,w_800,h_602/q_auto,f_auto/redbullcom/2024/8/2/orrrpd78i9g6o18xzs0m/red-bull-home-ground-2023-jugador') center/cover no-repeat;
+            text-align: center;
+            padding: 100px 20px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .badge-top {
+            display: inline-block;
+            background-color: rgba(14, 165, 233, 0.15);
+            border: 1px solid #0ea5e9;
+            color: #38bdf8;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: #0ea5e9;
+            color: #0b0f19;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #38bdf8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background-color: #1e293b;
+            color: #ffffff;
+            border: 1px solid #334155;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            border-color: #0ea5e9;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 28px;
+            border-left: 5px solid #0ea5e9;
+            padding-left: 14px;
+            color: #ffffff;
+        }
+
+        /* Tarjetas con imágenes */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: #111827;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #0ea5e9;
+        }
+
+        .card img {
+            width: 100%;
+            height: 185px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+
+        .status {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        .status.open {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            cursor: pointer;
+        }
+
+        .status.open:hover {
+            background-color: rgba(16, 185, 129, 0.35);
+        }
+
+        .status.soon {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #1e293b;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Estilos de Ventanas Modales (Inscripción y Reglamento) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background-color: #111827;
+            border: 1px solid #0ea5e9;
+            border-radius: 10px;
+            max-width: 550px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 28px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #ffffff;
+        }
+
+        .modal-box h3 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            border-left: 4px solid #0ea5e9;
+            padding-left: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0ea5e9;
+        }
+
+        .reglas-lista {
+            list-style: none;
+            color: #cbd5e1;
+            font-size: 0.92rem;
+        }
+
+        .reglas-lista li {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .reglas-lista strong {
+            color: #38bdf8;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .mensaje-exito {
+            display: none;
+            background-color: rgba(16, 185, 129, 0.15);
+            border: 1px solid #10b981;
+            color: #34d399;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">IPVG GAMING <span>BIOBÍO</span></a>
+        <nav>
+            <a href="#torneos">Torneos</a>
+            <a href="#equipos">Equipos</a>
+            <a href="#ranking">Ranking</a>
+            <a href="#inscripcion" class="btn-nav" onclick="abrirModal('modalInscripcion'); return false;">Inscribirse</a>
+        </nav>
+    </header>
+
+    <!-- Banner Principal con Imagen -->
+    <section class="hero">
+        <span class="badge-top">Plataforma Oficial eSports • IPVG</span>
+        <h1>Domina el competitivo en IPVG Gaming Biobío</h1>
+        <p>Compite en los torneos universitarios más intensos de la Región del Biobío. Forma tu equipo, escala en el ranking y representa a tu sede.</p>
+        <a href="#torneos" class="btn-primary">Ver Torneos</a>
+        <a href="#reglas" class="btn-secondary" onclick="abrirModal('modalReglamento'); return false;">Reglamento</a>
+    </section>
+
+    <!-- Sección de Torneos con Tarjetas e Imágenes -->
+    <main class="container" id="torneos">
+        <h2>Juegos Activos</h2>
+
+        <div class="grid">
+            <!-- Tarjeta 1 -->
+            <article class="card">
+                <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/campaigns/frames-win-games/valorant-core/geforce-fwg-varlorant-og-1200x630.jpg" alt="Torneo Valorant">
+                <div class="card-body">
+                    <h3>VALORANT</h3>
+                    <p>Modalidad 5v5 • Eliminación directa • Cupos limitados por sede.</p>
+                    <span class="status open" onclick="abrirInscripcionJuego('VALORANT')">Inscripciones Abiertas</span>
+                </div>
+            </article>
+
+            <!-- Tarjeta 2 -->
+            <article class="card">
+                <img src="https://cdn1.epicgames.com/offer/fn/FNBR_43-00_MSEE_KeyArt_FN_Logo_EGS_Launcher_Blade_2560x1440_2560x1440-b575b2bd2d0d4892b520b4262617de93" alt="Torneo Fortnite">
+                <div class="card-body">
+                    <h3>FORTNITE</h3>
+                    <p>Battle Royale • El mejor entre 80/50 • Recarga</p>
+                    <span class="status open" onclick="abrirInscripcionJuego('FORTNITE')">Inscripciones Abiertas</span>
+                </div>
+            </article>
+
+            <!-- Tarjeta 3 -->
+            <article class="card">
+                <img src="https://img.redbull.com/images/c_fill,g_auto,w_1200,h_630/f_auto,q_auto/redbullcom/2022/8/1/ksfga6rlx2ugfhjd9vnk/league-of-legends" alt="Torneo League of Legends">
+                <div class="card-body">
+                    <h3>LEAGUE OF LEGENDS</h3>
+                    <p>Grieta del Invocador 5v5 • Fase de grupos + Playoffs presenciales.</p>
+                    <span class="status open" onclick="abrirInscripcionJuego('LEAGUE OF LEGENDS')">Inscripciones Abiertas</span>
+                </div>
+            </article>
+
+            <!-- Tarjeta 4 -->
+            <article class="card">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202609/2115/15a0598111471efc38f4ff0fcf688f9fe3176a01c9c6c9b6.jpg" alt="Torneo EA Sports FC 27">
+                <div class="card-body">
+                    <h3>EA SPORTS FC 27</h3>
+                    <p>Torneo individual 1v1 • Fase clasificatoria online y gran final.</p>
+                    <span class="status soon">Próximamente</span>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- MODAL DE INSCRIPCIÓN -->
+    <div id="modalInscripcion" class="modal-overlay" onclick="cerrarSiEsFondo(event, 'modalInscripcion')">
+        <div class="modal-box">
+            <button class="modal-close" onclick="cerrarModal('modalInscripcion')">&times;</button>
+            <h3>Formulario de Inscripción IPVG</h3>
+            <form id="formInscripcion" onsubmit="enviarInscripcion(event)">
+                <div class="form-group">
+                    <label for="juego">Juego</label>
+                    <select id="juego" required>
+                        <option value="VALORANT">VALORANT (5v5)</option>
+                        <option value="FORTNITE">FORTNITE (Recarga y Battle Royale)</option>
+                        <option value="LEAGUE OF LEGENDS">LEAGUE OF LEGENDS (5v5)</option>
+                    </select>
+                </div>
+
+                 <div class="form-group">
+                    <label for="Institucion">Nombre de la institucion</label>
+                    <input type="text" id="equipo" placeholder="Ej: Instituto profesional Virginio Gomez" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="equipo">Nombre del Equipo o Jugador</label>
+                    <input type="text" id="equipo" placeholder="Ej: Conce Gc" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="capitan">Nombre Completo Capitán o Jugador </label>
+                    <input type="text" id="capitan" placeholder="Ej: Phillippee Cea" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo Institucional</label>
+                    <input type="email" id="correo" placeholder="nombre@virginiogomez.cl" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="riotId">ID</label>
+                    <input type="text" id="riotId" placeholder="Ej: p7p0" required>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; margin-top: 8px;">Confirmar Inscripción</button>
+            </form>
+
+            <div id="mensajeExito" class="mensaje-exito"></div>
+        </div>
+    </div>
+
+    <!-- MODAL DE REGLAMENTO OFICIAL -->
+    <div id="modalReglamento" class="modal-overlay" onclick="cerrarSiEsFondo(event, 'modalReglamento')">
+        <div class="modal-box">
+            <button class="modal-close" onclick="cerrarModal('modalReglamento')">&times;</button>
+            <h3>Reglamento Oficial Torneo IPVG 2026</h3>
+            <ul class="reglas-lista">
+                <li>
+                    <strong>1. Requisitos de Participación</strong>
+                    Todos los integrantes titulares y suplentes deben ser alumnos vigentes
+                <li>
+                    <strong>2. Puntualidad</strong>
+                    Los equipos tienen un máximo de 10 minutos de tolerancia desde la hora oficial programada en el fixture. De no presentarse el roster completo, se aplicará derrota 
+                </li>
+                <li>
+                    <strong>3. Formato por Disciplina</strong>
+                    <b>Valorant & LoL:</b> Partidas 5v5 en servidor LAS/Chile. Fase inicial Bo1 y semifinales/final Bo3.<br>
+                    <b>Fortnite:</b> Sala privada modo Recarga y Battle Royale, sistema de puntuación por posición y eliminaciones en 4 partidas.
+                </li>
+                <li>
+                    <strong>4. Conducta y Fair Play</strong>
+                    Está estrictamente prohibido el uso de software de terceros, exploits, smurfing.
+                <li>
+                    <strong>5. Pausas Técnicas</strong>
+                    Cada equipo dispone de hasta 2 pausas técnicas de 3 minutos por mapa en caso de desconexión o fallos de hardware comprobables.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script>
+        function abrirModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function cerrarModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function cerrarSiEsFondo(event, id) {
+            if (event.target.id === id) {
+                cerrarModal(id);
+            }
+        }
+
+        function abrirInscripcionJuego(nombreJuego) {
+            document.getElementById('juego').value = nombreJuego;
+            document.getElementById('mensajeExito').style.display = 'none';
+            abrirModal('modalInscripcion');
+        }
+
+        function enviarInscripcion(event) {
+            event.preventDefault();
+            const juego = document.getElementById('juego').value;
+            const sede = document.getElementById('sede').value;
+            const equipo = document.getElementById('equipo').value;
+
+            const boxExito = document.getElementById('mensajeExito');
+            boxExito.innerHTML = `<strong>¡Inscripción registrada con éxito!</strong><br>Equipo <b>${equipo}</b> (Sede ${sede}) inscrito en <b>${juego}</b>.`;
+            boxExito.style.display = 'block';
+
+            document.getElementById('formInscripcion').reset();
+        }
+    </script>
+
+</body>
+</html>
