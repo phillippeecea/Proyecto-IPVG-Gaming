@@ -25,13 +25,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #0ea5e9;
+            border-bottom: 2px solid #deee06;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 1.4rem;
             font-weight: 800;
             color: #ffffff;
@@ -39,10 +42,15 @@
             letter-spacing: 1px;
         }
 
-        .logo span {
-            color: #0ea5e9;
+        .logo img {
+            height: 55px;
+            width: auto;
         }
 
+        .logo span {
+            color: #06b8ee;
+        }
+    
         nav a {
             color: #cbd5e1;
             text-decoration: none;
@@ -52,11 +60,11 @@
         }
 
         nav a:hover {
-            color: #0ea5e9;
+            color: #deee06;
         }
 
         .btn-nav {
-            background-color: #0ea5e9;
+            background-color: #deee06;
             color: #0b0f19 !important;
             padding: 8px 18px;
             border-radius: 6px;
@@ -65,7 +73,7 @@
         }
 
         .btn-nav:hover {
-            background-color: #38bdf8;
+            background-color: #deee06;
         }
 
         /* Hero con imagen de fondo */
@@ -80,8 +88,8 @@
         .badge-top {
             display: inline-block;
             background-color: rgba(14, 165, 233, 0.15);
-            border: 1px solid #0ea5e9;
-            color: #38bdf8;
+            border: 1px solid #deee06;
+            color: #deee06;
             padding: 5px 14px;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -104,7 +112,7 @@
 
         .btn-primary {
             display: inline-block;
-            background-color: #0ea5e9;
+            background-color: #deee06;
             color: #0b0f19;
             padding: 12px 28px;
             border-radius: 6px;
@@ -115,7 +123,7 @@
         }
 
         .btn-primary:hover {
-            background-color: #38bdf8;
+            background-color: #deee06;
             transform: translateY(-2px);
         }
 
@@ -132,7 +140,7 @@
         }
 
         .btn-secondary:hover {
-            border-color: #0ea5e9;
+            border-color: #deee06;
         }
 
         /* Contenedor principal */
@@ -145,7 +153,7 @@
         h2 {
             font-size: 1.8rem;
             margin-bottom: 28px;
-            border-left: 5px solid #0ea5e9;
+            border-left: 5px solid #deee06;
             padding-left: 14px;
             color: #ffffff;
         }
@@ -167,7 +175,7 @@
 
         .card:hover {
             transform: translateY(-5px);
-            border-color: #0ea5e9;
+            border-color: #deee06;
         }
 
         .card img {
@@ -244,7 +252,7 @@
 
         .modal-box {
             background-color: #111827;
-            border: 1px solid #0ea5e9;
+            border: 1px solid #deee06;
             border-radius: 10px;
             max-width: 550px;
             width: 100%;
@@ -273,7 +281,7 @@
             color: #ffffff;
             font-size: 1.4rem;
             margin-bottom: 16px;
-            border-left: 4px solid #0ea5e9;
+            border-left: 4px solid #deee06;
             padding-left: 10px;
         }
 
@@ -302,7 +310,7 @@
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #0ea5e9;
+            border-color: #deee06;
         }
 
         .reglas-lista {
@@ -338,7 +346,7 @@
 <body>
 
     <header>
-        <a href="#" class="logo">IPVG GAMING <span>BIOBÍO</span></a>
+        <a href="#" class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Logotipo_Instituto_Profesional_Virginio_G%C3%B3mez.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="Logo IPVG">IPVG GAMING <span>BIOBÍO</span></a>
         <nav>
             <a href="#torneos">Torneos</a>
             <a href="#equipos">Equipos</a>
@@ -457,7 +465,8 @@
             <h3>Reglamento Oficial Torneo IPVG 2026</h3>
             <ul class="reglas-lista">
                 <li>
-                    <strong>1. Requisitos de Participación</strong>
+1.                     <strong>Requisitos de Participación
+</strong>
                     Todos los integrantes titulares y suplentes deben ser alumnos vigentes
                 <li>
                     <strong>2. Puntualidad</strong>
