@@ -1,7 +1,7 @@
 # Proyecto-IPVG-Gaming
 iPVG Gaming Biobío — Plataforma eSports
 
-Plataforma web oficial del circuito de eSports del Instituto Profesional Virginio Gómez . Diseñada para centralizar la comunidad competitiva estudiantil 
+Plataforma web oficial de torneos de eSports del Instituto Profesional Virginio Gómez . Diseñada para centralizar la comunidad competitiva estudiantil 
 
 ---
 
